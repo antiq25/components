@@ -1,0 +1,7 @@
+https://localhost:4443 {
+	# First, define the exception: Reverse proxy API calls to localhost:3000
+	reverse_proxy /api/* http://localhost:3000
+
+	# Then, reverse proxy everything else to localhost:3001
+	reverse_proxy http://localhost:3001
+}
