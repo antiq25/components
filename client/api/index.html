@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap API Integration</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <!-- Signup Form -->
+    <div class="mb-5">
+        <h2>Signup</h2>
+        <form id="signupForm">
+            <input type="email" class="form-control mb-2" placeholder="Email" id="signupEmail">
+            <input type="password" class="form-control mb-2" placeholder="Password" id="signupPassword">
+            <input type="text" class="form-control mb-2" placeholder="First Name" id="signupFirstName">
+            <input type="text" class="form-control mb-2" placeholder="Last Name" id="signupLastName">
+            <button type="submit" class="btn btn-primary">Signup</button>
+        </form>
+    </div>
+
+    <!-- Login Form -->
+    <div class="mb-5">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" class="form-control mb-2" placeholder="Email" id="loginEmail">
+            <input type="password" class="form-control mb-2" placeholder="Password" id="loginPassword">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+    <!-- Other sections for Email Verification, Profile Fetching, etc. can be added in a similar manner -->
+
+</div>
+
+<!-- Bootstrap 5 JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Attach event listeners for the forms and call the corresponding API functions
+    document.getElementById('signupForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
+        const firstName = document.getElementById('signupFirstName').value;
+        const lastName = document.getElementById('signupLastName').value;
+
+        try {
+            const response = await signup(email, password, firstName, lastName);
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    });
+
+  </script>
+  <script src="../dist/apiHandler.js" type="module">  </script>
